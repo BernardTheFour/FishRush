@@ -7,7 +7,7 @@ public class InputTouch : MonoBehaviour
     private Vector2 InitialTouch;
     private Vector2 CurrentTouch;
     private Vector2 FinalTouch;
-    private Touch myTouch;
+    private Touch myTouch = new Touch();
 
     private float SwipeAngle;
 
