@@ -19,6 +19,9 @@ public class InputTouch : MonoBehaviour
 
     private Thresold distanceThresold = new Thresold();
 
+    private static InputHorizontal inputHorizontal;
+    private static InputJump inputJump;
+
     // Update is called once per frame
     void Update()
     {
@@ -38,7 +41,9 @@ public class InputTouch : MonoBehaviour
 
                 case TouchPhase.Moved:
                     CurrentTouch = myTouch.position;
-                    Debug.Log("Finger " + myTouch.fingerId + " is moving to " + CurrentTouch);
+                    //Debug.Log("Finger " + myTouch.fingerId + " is moving to " + CurrentTouch);
+
+                    inputHorizontal.Execute(Direction: CurrentTouch.y);
                     break;
 
                 case TouchPhase.Ended:
@@ -55,24 +60,22 @@ public class InputTouch : MonoBehaviour
                     Debug.Log("Angle Thresold: " + SwipeAngle);
 
                     if (timeThresold.Delta > SWIPETIME || SwipeAngle > ANGLETHRESOLD)
-                    {   //Time too long to be a swipe or not vertical enough to be called vertical swipe
-                        Debug.Log("Finger " + myTouch.fingerId + " is ended");
+                    {   
+                        //Time too long to be a swipe or not vertical enough to be called vertical swipe
+                        //Debug.Log("Finger " + myTouch.fingerId + " is ended");
                         break;
                     }
 
                     if (FinalTouch.y > distanceThresold.Max)
                     {
                         //Jump
-                        Debug.Log("Finger " + myTouch.fingerId + " swiping up");
+                        Debug.Log("Jump");
+                        inputJump.Execute();
                     }
                     else if (FinalTouch.y < distanceThresold.Min)
                     {
                         //Return to water
-                        Debug.Log("Finger " + myTouch.fingerId + " swiping down");
-                    }
-                    else
-                    {   //Swipe is not far enough
-                        Debug.Log("Finger " + myTouch.fingerId + " is ended");
+                        //Debug.Log("Return to water");
                     }
                     break;
             }

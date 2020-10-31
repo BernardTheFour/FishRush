@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using static MovementState;
-public class InputHorizontal : InputCommand{
-    public InputHorizontal() : base(){
+public class InputHorizontal : InputCommand
+{
+    public InputHorizontal() : base()
+    {
 
     }
 
