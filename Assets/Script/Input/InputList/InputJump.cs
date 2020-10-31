@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static MovementState;
+using static MovementStateMachine;
 
 public class InputJump : InputCommand
 {

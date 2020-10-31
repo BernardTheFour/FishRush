@@ -41,9 +41,7 @@ public class InputTouch : MonoBehaviour
 
                 case TouchPhase.Moved:
                     CurrentTouch = myTouch.position;
-                    //Debug.Log("Finger " + myTouch.fingerId + " is moving to " + CurrentTouch);
 
-                    inputHorizontal.Execute(Direction: CurrentTouch.y);
                     break;
 
                 case TouchPhase.Ended:
@@ -60,7 +58,7 @@ public class InputTouch : MonoBehaviour
                     Debug.Log("Angle Thresold: " + SwipeAngle);
 
                     if (timeThresold.Delta > SWIPETIME || SwipeAngle > ANGLETHRESOLD)
-                    {   
+                    {
                         //Time too long to be a swipe or not vertical enough to be called vertical swipe
                         //Debug.Log("Finger " + myTouch.fingerId + " is ended");
                         break;
