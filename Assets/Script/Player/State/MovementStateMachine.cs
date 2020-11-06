@@ -6,18 +6,19 @@ public class MovementStateMachine
 {
     public enum Action
     {
-        Move, Jump
+        move, jump
     }
 
-    public static Action ActionState;
-    public static float PlayerDirection;
+    public static Action ActionState { get; set; }
+
+    public static Vector2 PlayerDirection { get; set; }
 
     public MovementState CurrentState { get; private set; }
 
     public void Initialize (MovementState startingState)
     {
-        ActionState = Action.Move;
-        PlayerDirection = 0f;
+        ActionState = Action.move;
+        PlayerDirection = Vector2.zero;
 
         CurrentState = startingState;
         startingState.Enter();

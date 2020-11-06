@@ -1,88 +1,108 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static WorldPositionOnPlane;
 
 public class InputTouch : MonoBehaviour
 {
-    private Vector2 InitialTouch;
-    private Vector3 CurrentTouch;
-    private Vector2 FinalTouch;
-    private Touch myTouch = new Touch();
+    private Vector2 initialTouch;
+    private Vector3 currentTouch;
+    private Vector2 finalTouch;
+    private Touch myTouch;
 
-    private float SwipeAngle;
+    private float swipeAngle;
 
     private const float SWIPETIME = 0.2f;
     private const float SWIPEDISTANCE = 100f;
     private const float ANGLETHRESOLD = 30f;
 
-    private Thresold timeThresold = new Thresold();
+    private Thresold timeThresold;
 
-    private Thresold distanceThresold = new Thresold();
+    private Thresold distanceThresold;
 
-    private static InputHorizontal inputHorizontal = new InputHorizontal();
-    private static InputJump inputJump = new InputJump();
+    private static InputHorizontal inputHorizontal;
+    private static InputJump inputJump;
+
+    private WorldPositionOnPlane horizontalPlane;
+
+    private void Awake()
+    {
+        myTouch = new Touch();
+        timeThresold = new Thresold();
+        distanceThresold = new Thresold();
+
+        inputHorizontal = new InputHorizontal();
+        inputJump = new InputJump();
+
+        horizontalPlane = new WorldPositionOnPlane(orientation: Orientation.horizontal, offset: 0f);
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount == 0)
         {
-            myTouch = Input.GetTouch(0);
+            return;
+        }
 
-            Debug.Log("CurrentTouch: " + CurrentTouch);
+        myTouch = Input.GetTouch(0);
+        switch (myTouch.phase)
+        {
+            case TouchPhase.Began:
+                initialTouch = myTouch.position;
 
-            inputHorizontal.Execute(CurrentTouch.x);
+                //start the time counter
+                timeThresold.Min = Time.time;
+                break;
 
+            case TouchPhase.Moved:
+                //Code for horizontal movement
+                currentTouch = myTouch.position;
 
-            switch (myTouch.phase)
-            {
-                case TouchPhase.Began:
-                    InitialTouch = myTouch.position;
-                    //Debug.Log("Finger " + myTouch.fingerId + " is began");
+                if (currentTouch.y < Screen.height * 0.2f)
+                {
+                    Vector3 direction = horizontalPlane.GetPoint(currentTouch);
+                    inputHorizontal.Execute(direction: new Vector2(direction.x, direction.z));
+                }                
 
-                    //start the time counter
-                    timeThresold.Min = Time.time;
+                //Vector3 WorldPoint = HorizontalPlane.GetPoint(_currentTouch);
+                //Debug.Log("Input position: " + WorldPoint);
+                break;
+
+            case TouchPhase.Ended:
+                //Code for jump behaviour
+                finalTouch = myTouch.position;
+
+                //Calculate time thresold
+                timeThresold.Max = Time.time;
+                timeThresold.Delta = timeThresold.Min - timeThresold.Max;
+
+                //Calculate distance thresold 
+                distanceThresold.Min = initialTouch.y - SWIPEDISTANCE;
+                distanceThresold.Max = initialTouch.y + SWIPEDISTANCE;
+
+                //find the swipe angle
+                swipeAngle = distanceThresold.Angle(initialTouch, finalTouch);
+
+                if (timeThresold.Delta > SWIPETIME || swipeAngle > ANGLETHRESOLD)
+                {
+                    //Time too long to be a swipe or not vertical enough to be called vertical swipe
+                    //Debug.Log("Finger " + myTouch.fingerId + " is ended");
                     break;
+                }
 
-                case TouchPhase.Moved:
-                    //CurrentTouch = Camera.main.ScreenToWorldPoint(myTouch.position);
-
-                    //inputHorizontal.Execute(CurrentTouch.x);
-                    break;
-
-                case TouchPhase.Ended:
-                    FinalTouch = myTouch.position;
-
-                    timeThresold.Max = Time.time;
-                    timeThresold.Delta = timeThresold.Min - timeThresold.Max;
-
-                    distanceThresold.Min = InitialTouch.y - SWIPEDISTANCE;
-                    distanceThresold.Max = InitialTouch.y + SWIPEDISTANCE;
-
-                    //find the swipe angle
-                    SwipeAngle = distanceThresold.Angle(InitialTouch, FinalTouch);
-                    //Debug.Log("Angle Thresold: " + SwipeAngle);
-
-                    if (timeThresold.Delta > SWIPETIME || SwipeAngle > ANGLETHRESOLD)
-                    {
-                        //Time too long to be a swipe or not vertical enough to be called vertical swipe
-                        //Debug.Log("Finger " + myTouch.fingerId + " is ended");
-                        break;
-                    }
-
-                    if (FinalTouch.y > distanceThresold.Max)
-                    {
-                        //Jump
-                        //Debug.Log("Jump");
-                        inputJump.Execute();
-                    }
-                    else if (FinalTouch.y < distanceThresold.Min)
-                    {
-                        //Dive
-                        //Debug.Log("Return to water");
-                    }
-                    break;
-            }
+                if (finalTouch.y > distanceThresold.Max)
+                {
+                    //Jump
+                    //Debug.Log("Jump");
+                    inputJump.Execute();
+                }
+                else if (finalTouch.y < distanceThresold.Min)
+                {
+                    //Dive
+                    //Debug.Log("Return to water");
+                }
+                break;
         }
     }
 }

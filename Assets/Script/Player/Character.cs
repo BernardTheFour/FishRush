@@ -20,7 +20,7 @@ public class Character : MonoBehaviour
     #endregion
 
     #region CharacterVariables
-    public float Speed;
+    public float Speed = 5;
     public float targetPosition;
     #endregion
 
@@ -39,6 +39,8 @@ public class Character : MonoBehaviour
 
     private void Update()
     {
+        targetPosition = MovementStateMachine.PlayerDirection.x;
+
         movementSM.CurrentState.HandleState();
         //Debug.Log("Target Position: " + targetPosition);
     }

@@ -15,11 +15,9 @@ public class PlayerMoving : MovementState
     public PlayerMoving(Character character, MovementStateMachine stateMachine) : base(character, stateMachine)
     {
         fishRB = character.fishRB;
-        targetPosition = character.targetPosition;
         MoveSpeed = character.Speed;
 
-        initialPosition.y = fishRB.position.y;
-        initialPosition.z = fishRB.position.z;
+        initialPosition = fishRB.position;
     }
 
     public override void Enter()
@@ -44,12 +42,16 @@ public class PlayerMoving : MovementState
     {
         // do not delete base
         base.HandlePhysics();
+        
+        Vector3 moving = new Vector3(MovementStateMachine.PlayerDirection.x, fishRB.transform.position.y, fishRB.transform.position.z);
+        fishRB.MovePosition(moving);
+        //targetPosition = character.targetPosition;
 
-        deltaPos = initialPosition - fishRB.position;
-        deltaPosY = targetPosition - fishRB.position.y;
+        //deltaPos = initialPosition - fishRB.position;
+        //deltaPosY = targetPosition - fishRB.position.y;
 
-        deltaPos.y = deltaPosY;
-        fishRB.velocity = 1f / Time.fixedDeltaTime * deltaPos * Mathf.Pow(MoveSpeed, 90f * Time.fixedDeltaTime);
+        //deltaPos.y = deltaPosY;
+        //fishRB.velocity = 1f / Time.fixedDeltaTime * deltaPos * Mathf.Pow(MoveSpeed, 90f * Time.fixedDeltaTime);
 
     }
 

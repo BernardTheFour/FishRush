@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static MovementStateMachine;
 public class InputHorizontal : InputCommand
 {
     public InputHorizontal() : base()
@@ -9,9 +8,9 @@ public class InputHorizontal : InputCommand
 
     }
 
-    public override void Execute(float Direction)
+    public override void Execute(Vector2 direction)
     {
-        ActionState = Action.Move;
-        PlayerDirection = Direction;
+        MovementStateMachine.ActionState = MovementStateMachine.Action.move;
+        MovementStateMachine.PlayerDirection = direction;
     }
 }
