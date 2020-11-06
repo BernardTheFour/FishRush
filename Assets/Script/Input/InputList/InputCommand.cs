@@ -4,15 +4,9 @@ using UnityEngine;
 // using command pattern for input
 public class InputCommand
 {
-    public InputCommand()
-    {
-    }
+    public InputCommand() { }
 
-    public virtual void Execute()
-    {
-    }
+    public virtual void Execute() { }
 
-    public virtual void Execute(float Direction)
-    {
-    }
+    public virtual void Execute(Vector2 direction) { }
 }
