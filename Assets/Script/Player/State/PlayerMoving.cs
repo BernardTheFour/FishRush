@@ -1,30 +1,33 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static MovementStateMachine;
 
 public class PlayerMoving : MovementState
-{   
+{
     private float targetPosition;
-    private float MoveSpeed;
-    private float deltaPosY;
+    private float currentPosition;
+    private float maxVelocity;
+    private float speedChange;
 
-    private Vector3 deltaPos = new Vector3();
-    private Vector3 initialPosition = new Vector3();
+    private float velocityChange;
+    private float currentVelocity;
+    private float targetVelocity;
+
+    private Vector3 finalSpeed = new Vector3();
+
     private Rigidbody fishRB = new Rigidbody();
     public PlayerMoving(Character character, MovementStateMachine stateMachine) : base(character, stateMachine)
     {
-        fishRB = character.fishRB;
-        MoveSpeed = character.Speed;
-
-        initialPosition = fishRB.position;
+        fishRB = character.myRigidbody;
+        maxVelocity = character.MaxVelocity;
+        speedChange = character.SpeedChange;
     }
 
     public override void Enter()
     {
         // do not delete base
         base.Enter();
-        fishRB.useGravity = false;
     }
 
     public override void Exit()
@@ -36,30 +39,54 @@ public class PlayerMoving : MovementState
     public override void HandleLogic()
     {
         base.HandleLogic();
+
+        //copy the value from character controller
+        targetPosition = character.TargetPosition;
+        currentPosition = fishRB.transform.position.x;
+
+        //get current velocity
+        currentVelocity = fishRB.velocity.x;
+
+        //get vector direction
+        targetVelocity = targetPosition - currentPosition;
+        targetVelocity = Mathf.Clamp(targetVelocity, -1, 1);
+
+        //calculate how fast we should move
+        targetVelocity *= speedChange;
+
+        //apply force that attemp to reach target velocity
+        velocityChange = targetVelocity - currentVelocity;
+        velocityChange = Mathf.Round(velocityChange * 100f) / 100f;
+        velocityChange = Mathf.Clamp(velocityChange, -maxVelocity, maxVelocity);
+
+
+        ////set those value to Vector3 format
+        finalSpeed = fishRB.velocity;
+        finalSpeed.x = velocityChange;
     }
 
     public override void HandlePhysics()
     {
         // do not delete base
         base.HandlePhysics();
-        
-        Vector3 moving = new Vector3(MovementStateMachine.PlayerDirection.x, fishRB.transform.position.y, fishRB.transform.position.z);
-        fishRB.MovePosition(moving);
-        //targetPosition = character.targetPosition;
 
-        //deltaPos = initialPosition - fishRB.position;
-        //deltaPosY = targetPosition - fishRB.position.y;
+        fishRB.AddForce(finalSpeed, ForceMode.VelocityChange);
 
-        //deltaPos.y = deltaPosY;
-        //fishRB.velocity = 1f / Time.fixedDeltaTime * deltaPos * Mathf.Pow(MoveSpeed, 90f * Time.fixedDeltaTime);
+        //Debug.Log("TargetPosition: " + targetPosition);
+        //Debug.Log("CurrentVelocity: " + currentVelocity
+        //    + "\nTargetVelocity: " + targetVelocity
+        //    + "\nVelocityChange: " + velocityChange
+        //    + "\nFinalSpeed: " + finalSpeed);
 
+        //Debug.Log("Max Velocity: " + maxVelocity
+        //    + "\nSpeedChange: " + speedChange);
     }
 
     public override void HandleState()
     {
         // do not delete base
         base.HandleState();
-        
+
         //switch (ActionState)
         //{
         //    case Action.Jump:
