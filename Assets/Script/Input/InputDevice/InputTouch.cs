@@ -65,7 +65,6 @@ public class InputTouch : MonoBehaviour
                     inputHorizontal.Execute(direction: new Vector2(direction.x, direction.z));
                 }                
 
-                //Vector3 WorldPoint = HorizontalPlane.GetPoint(_currentTouch);
                 //Debug.Log("Input position: " + WorldPoint);
                 break;
 
