@@ -30,7 +30,7 @@ public class Character : MonoBehaviour
     {
         //initialize this first before assigned to object
         MaxVelocity = 1f;
-        SpeedChange = 4f;
+        SpeedChange = 8f;
 
         myRigidbody = this.GetComponent<Rigidbody>();
 
