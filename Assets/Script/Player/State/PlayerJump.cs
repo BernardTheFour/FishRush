@@ -1,40 +1,55 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static MovementStateMachine;
 
-public class PlayerJump : MovementState
+public class PlayerJump : MonoBehaviour, IMoveAction
 {
-    public PlayerJump(Character character, MovementStateMachine stateMachine) : base(character, stateMachine)
+    private bool midAir = false;
+
+    private Rigidbody fishRB = new Rigidbody();
+    private float jumpForce;
+
+    private Character character;
+    private MovementStateMachine stateMachine;
+
+    public PlayerJump(Character character, MovementStateMachine stateMachine)
     {
+        this.character = character;
+        this.stateMachine = stateMachine;
+
+        fishRB = character.MyRigidbody;
+        jumpForce = character.JumpForce;
     }
 
-    public override void Enter()
+    public void Enter()
     {
-        // do not delete base
-        base.Enter();
+        midAir = true;
     }
 
-    public override void Exit()
+    public void Exit()
     {
-        // do not delete base
-        base.Exit();
+        midAir = false;
     }
 
-    public override void HandleLogic()
+    public void HandleLogic()
     {
-        // do not delete base
-        base.HandleLogic();
+        Debug.Log("State: Jump");
     }
 
-    public override void HandlePhysics()
+    public void HandlePhysics()
+    {    }
+
+    public void HandleState()
     {
-        // do not delete base
-        base.HandlePhysics();
+        if (!midAir)
+        {
+            stateMachine.ChangeState(character.MovingState);
+        }
     }
 
-    public override void HandleState()
+    private void OnCollisionEnter(Collision collision)
     {
-        // do not delete base
-        base.HandleState();
+        
     }
 }

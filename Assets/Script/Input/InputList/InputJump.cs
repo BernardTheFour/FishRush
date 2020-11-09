@@ -11,6 +11,6 @@ public class InputJump : InputCommand
 
     public override void Execute()
     {
-        ActionState = Action.jump;
+        ActionState = PlayerAction.jump;
     }
 }

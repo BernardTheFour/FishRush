@@ -16,13 +16,14 @@ public class Character : MonoBehaviour
     #endregion
 
     #region UnityComponentVariables
-    public Rigidbody myRigidbody;
+    public Rigidbody MyRigidbody;
     #endregion
 
     #region CharacterVariables
     public float MaxVelocity { get; private set; }
     public float SpeedChange { get; private set; }
     public float TargetPosition { get; private set;}
+    public float JumpForce { get; private set; }
     #endregion
 
     #region Monobehavior Callbacks
@@ -32,7 +33,7 @@ public class Character : MonoBehaviour
         MaxVelocity = 1f;
         SpeedChange = 8f;
 
-        myRigidbody = this.GetComponent<Rigidbody>();
+        MyRigidbody = this.GetComponent<Rigidbody>();
 
         movementSM = new MovementStateMachine();
 
