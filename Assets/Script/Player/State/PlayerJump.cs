@@ -1,40 +1,67 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static MovementStateMachine;
 
-public class PlayerJump : MovementState
+public class PlayerJump : MonoBehaviour, IMoveAction
 {
-    public PlayerJump(Character character, MovementStateMachine stateMachine) : base(character, stateMachine)
+    private bool midAir = false;
+
+    private Rigidbody fishRB = new Rigidbody();
+    private float jumpForce;
+
+    private Character character;
+    private MovementStateMachine stateMachine;
+
+    public PlayerJump(Character character, MovementStateMachine stateMachine)
     {
+        this.character = character;
+        this.stateMachine = stateMachine;
+
+        fishRB = character.MyRigidbody;
+        jumpForce = character.JumpForce;
     }
 
-    public override void Enter()
+    public void Enter()
     {
-        // do not delete base
-        base.Enter();
+        midAir = true;
+        fishRB.AddForce(character.transform.up * 5f, ForceMode.Impulse);
+        character.StartCoroutine(delay());
     }
 
-    public override void Exit()
+    public void Exit()
     {
-        // do not delete base
-        base.Exit();
+        midAir = false;
     }
 
-    public override void HandleLogic()
+    public void HandleLogic()
     {
-        // do not delete base
-        base.HandleLogic();
+
     }
 
-    public override void HandlePhysics()
+    public void HandlePhysics()
     {
-        // do not delete base
-        base.HandlePhysics();
+
     }
 
-    public override void HandleState()
+    public void HandleState()
     {
-        // do not delete base
-        base.HandleState();
+        if (!midAir)
+        {
+            MovementStateMachine.ActionState = PlayerAction.move;
+            stateMachine.ChangeState(character.MovingState);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
+
+    IEnumerator delay()
+    {
+        yield return new WaitForSeconds(4);
+
+        midAir = false;
     }
 }

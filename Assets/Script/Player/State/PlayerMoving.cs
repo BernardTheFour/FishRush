@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static MovementStateMachine;
 
-public class PlayerMoving : MovementState
+public class PlayerMoving : IMoveAction
 {
     private float targetPosition;
     private float currentPosition;
@@ -17,29 +18,27 @@ public class PlayerMoving : MovementState
     private Vector3 finalSpeed = new Vector3();
 
     private Rigidbody fishRB = new Rigidbody();
-    public PlayerMoving(Character character, MovementStateMachine stateMachine) : base(character, stateMachine)
+
+    private Character character = new Character();
+    private MovementStateMachine stateMachine = new MovementStateMachine();
+    public PlayerMoving(Character character, MovementStateMachine stateMachine)
     {
-        fishRB = character.myRigidbody;
+        this.character = character;
+        this.stateMachine = stateMachine;
+
+        fishRB = character.MyRigidbody;
         maxVelocity = character.MaxVelocity;
         speedChange = character.SpeedChange;
     }
 
-    public override void Enter()
-    {
-        // do not delete base
-        base.Enter();
-    }
+    public void Enter()
+    {  }
 
-    public override void Exit()
-    {
-        // do not delete base
-        base.Exit();
-    }
+    public void Exit()
+    {    }
 
-    public override void HandleLogic()
+    public void HandleLogic()
     {
-        base.HandleLogic();
-
         //copy the value from character controller
         targetPosition = character.TargetPosition;
         currentPosition = fishRB.transform.position.x;
@@ -65,11 +64,8 @@ public class PlayerMoving : MovementState
         finalSpeed.x = velocityChange;
     }
 
-    public override void HandlePhysics()
+    public void HandlePhysics()
     {
-        // do not delete base
-        base.HandlePhysics();
-
         fishRB.AddForce(finalSpeed, ForceMode.VelocityChange);
 
         //Debug.Log("TargetPosition: " + targetPosition);
@@ -82,17 +78,14 @@ public class PlayerMoving : MovementState
         //    + "\nSpeedChange: " + speedChange);
     }
 
-    public override void HandleState()
+    public void HandleState()
     {
-        // do not delete base
-        base.HandleState();
-
-        //switch (ActionState)
-        //{
-        //    case Action.Jump:
-        //        // jump
-        //        stateMachine.ChangeState(character.JumpingState);
-        //        break;
-        //}
+        switch (ActionState)
+        {
+            case PlayerAction.jump:
+                // jump
+                stateMachine.ChangeState(character.JumpingState);
+                break;
+        }
     }
 }

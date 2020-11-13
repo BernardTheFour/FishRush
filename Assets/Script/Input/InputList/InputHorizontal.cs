@@ -10,7 +10,7 @@ public class InputHorizontal : InputCommand
 
     public override void Execute(Vector2 direction)
     {
-        MovementStateMachine.ActionState = MovementStateMachine.Action.move;
+        MovementStateMachine.ActionState = MovementStateMachine.PlayerAction.move;
         MovementStateMachine.PlayerDirection = direction;
     }
 }
