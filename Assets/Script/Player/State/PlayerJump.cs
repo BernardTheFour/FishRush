@@ -25,6 +25,8 @@ public class PlayerJump : MonoBehaviour, IMoveAction
     public void Enter()
     {
         midAir = true;
+        fishRB.AddForce(character.transform.up * 5f, ForceMode.Impulse);
+        character.StartCoroutine(delay());
     }
 
     public void Exit()
@@ -34,16 +36,19 @@ public class PlayerJump : MonoBehaviour, IMoveAction
 
     public void HandleLogic()
     {
-        Debug.Log("State: Jump");
+
     }
 
     public void HandlePhysics()
-    {    }
+    {
+
+    }
 
     public void HandleState()
     {
         if (!midAir)
         {
+            MovementStateMachine.ActionState = PlayerAction.move;
             stateMachine.ChangeState(character.MovingState);
         }
     }
@@ -51,5 +56,12 @@ public class PlayerJump : MonoBehaviour, IMoveAction
     private void OnCollisionEnter(Collision collision)
     {
         
+    }
+
+    IEnumerator delay()
+    {
+        yield return new WaitForSeconds(4);
+
+        midAir = false;
     }
 }

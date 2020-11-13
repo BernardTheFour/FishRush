@@ -52,7 +52,8 @@ public class Character : MonoBehaviour
 
         movementSM.CurrentState.HandleState();
         movementSM.CurrentState.HandleLogic();
-        //Debug.Log("Target Position: " + targetPosition);
+        Debug.Log("State: " + MovementStateMachine.ActionState + 
+            "\nFish Position: " + MyRigidbody.position) ;
     }
 
     private void FixedUpdate()

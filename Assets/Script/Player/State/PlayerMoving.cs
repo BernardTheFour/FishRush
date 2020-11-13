@@ -39,8 +39,6 @@ public class PlayerMoving : IMoveAction
 
     public void HandleLogic()
     {
-        Debug.Log("State: Move");
-
         //copy the value from character controller
         targetPosition = character.TargetPosition;
         currentPosition = fishRB.transform.position.x;
