@@ -10,13 +10,13 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     #region StateMachineVariables
-    public MovementStateMachine movementSM;
-    public PlayerMoving MovingState;
-    public PlayerJump JumpingState;
+    public MovementStateMachine movementSM { get; private set; }
+    public PlayerMoving MovingState { get; private set; }
+    public PlayerJump JumpingState { get; private set; }
     #endregion
 
     #region UnityComponentVariables
-    public Rigidbody MyRigidbody;
+    public Rigidbody MyRigidbody { get; private set; }
     #endregion
 
     #region CharacterVariables
@@ -26,24 +26,34 @@ public class Character : MonoBehaviour
     public float JumpForce { get; private set; }
     #endregion
 
+    #region CharacterBoolean
+    public static bool isGrounded { get; private set; }
+    #endregion
+
     #region Monobehavior Callbacks
+
+    [SerializeField] private Debugging debugger = null;
+
     private void Awake()
     {
         //initialize this first before assigned to object
         MaxVelocity = 1f;
         SpeedChange = 8f;
+        JumpForce = 5f;
 
         MyRigidbody = this.GetComponent<Rigidbody>();
 
         movementSM = new MovementStateMachine();
 
         MovingState = new PlayerMoving(this, movementSM);
-        JumpingState = new PlayerJump(this, movementSM);        
+        JumpingState = new PlayerJump(this, movementSM);    
     }
 
     private void Start()
     {
         movementSM.Initialize(MovingState);
+
+        debugger.showDebug = true;
     }
 
     private void Update()
@@ -52,8 +62,12 @@ public class Character : MonoBehaviour
 
         movementSM.CurrentState.HandleState();
         movementSM.CurrentState.HandleLogic();
-        Debug.Log("State: " + MovementStateMachine.ActionState + 
-            "\nFish Position: " + MyRigidbody.position) ;
+
+        if (debugger.showDebug)
+        {
+            debugger.State = movementSM.GetState();
+            debugger.Position = transform.position;
+        }
     }
 
     private void FixedUpdate()
@@ -61,4 +75,22 @@ public class Character : MonoBehaviour
         movementSM.CurrentState.HandlePhysics();
     }
     #endregion
+
+    #region Collision Detection
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("River"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.transform.CompareTag("River"))
+        {
+            isGrounded = false;
+        }
+    }
+    #endregion    
 }

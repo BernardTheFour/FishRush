@@ -6,6 +6,8 @@ using static MovementStateMachine;
 
 public class PlayerMoving : IMoveAction
 {
+    private string NAME = "Move";
+
     private float targetPosition;
     private float currentPosition;
     private float maxVelocity;
@@ -21,6 +23,7 @@ public class PlayerMoving : IMoveAction
 
     private Character character = new Character();
     private MovementStateMachine stateMachine = new MovementStateMachine();
+
     public PlayerMoving(Character character, MovementStateMachine stateMachine)
     {
         this.character = character;
@@ -32,10 +35,10 @@ public class PlayerMoving : IMoveAction
     }
 
     public void Enter()
-    {  }
+    { }
 
     public void Exit()
-    {    }
+    { }
 
     public void HandleLogic()
     {
@@ -67,15 +70,6 @@ public class PlayerMoving : IMoveAction
     public void HandlePhysics()
     {
         fishRB.AddForce(finalSpeed, ForceMode.VelocityChange);
-
-        //Debug.Log("TargetPosition: " + targetPosition);
-        //Debug.Log("CurrentVelocity: " + currentVelocity
-        //    + "\nTargetVelocity: " + targetVelocity
-        //    + "\nVelocityChange: " + velocityChange
-        //    + "\nFinalSpeed: " + finalSpeed);
-
-        //Debug.Log("Max Velocity: " + maxVelocity
-        //    + "\nSpeedChange: " + speedChange);
     }
 
     public void HandleState()
@@ -87,5 +81,10 @@ public class PlayerMoving : IMoveAction
                 stateMachine.ChangeState(character.JumpingState);
                 break;
         }
+    }
+
+    public string getName()
+    {
+        return NAME;
     }
 }

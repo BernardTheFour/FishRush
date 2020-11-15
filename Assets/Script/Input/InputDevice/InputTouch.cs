@@ -59,11 +59,11 @@ public class InputTouch : MonoBehaviour
                 //Code for horizontal movement
                 currentTouch = myTouch.position;
 
-                if (currentTouch.y < Screen.height * 0.2f)
-                {
+                //if (currentTouch.y < Screen.height * 0.5f)
+                //{
                     Vector3 direction = horizontalPlane.GetPoint(currentTouch);
                     inputHorizontal.Execute(direction: new Vector2(direction.x, direction.z));
-                }                
+                //}                
 
                 //Debug.Log("Input position: " + WorldPoint);
                 break;
