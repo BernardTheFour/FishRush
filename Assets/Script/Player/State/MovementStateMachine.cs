@@ -15,7 +15,12 @@ public class MovementStateMachine
 
     public IMoveAction CurrentState { get; private set; }
 
-    public void Initialize (IMoveAction startingState)
+    public string GetState()
+    {
+        return CurrentState.getName();
+    }
+
+    public void Initialize(IMoveAction startingState)
     {
         ActionState = PlayerAction.move;
         PlayerDirection = Vector2.zero;

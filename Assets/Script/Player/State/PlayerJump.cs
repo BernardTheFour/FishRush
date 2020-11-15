@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using static MovementStateMachine;
 
-public class PlayerJump : MonoBehaviour, IMoveAction
+public class PlayerJump : IMoveAction
 {
-    private bool midAir = false;
+    private string NAME = "Jump";
 
     private Rigidbody fishRB = new Rigidbody();
     private float jumpForce;
@@ -24,44 +24,32 @@ public class PlayerJump : MonoBehaviour, IMoveAction
 
     public void Enter()
     {
-        midAir = true;
-        fishRB.AddForce(character.transform.up * 5f, ForceMode.Impulse);
-        character.StartCoroutine(delay());
+        fishRB.velocity = Vector3.zero;
+        fishRB.AddForce(character.transform.up * jumpForce, ForceMode.Impulse);
     }
 
     public void Exit()
-    {
-        midAir = false;
-    }
-
-    public void HandleLogic()
-    {
-
-    }
-
-    public void HandlePhysics()
-    {
-
-    }
+    { }
 
     public void HandleState()
     {
-        if (!midAir)
+        switch (ActionState)
         {
-            MovementStateMachine.ActionState = PlayerAction.move;
-            stateMachine.ChangeState(character.MovingState);
+            case PlayerAction.move:
+                // jump
+                stateMachine.ChangeState(character.MovingState);
+                break;
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public string getName()
     {
-        
+        return NAME;
     }
 
-    IEnumerator delay()
-    {
-        yield return new WaitForSeconds(4);
+    public void HandleLogic()
+    { }
 
-        midAir = false;
-    }
+    public void HandlePhysics()
+    { }
 }

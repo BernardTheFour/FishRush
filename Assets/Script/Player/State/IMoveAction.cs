@@ -12,4 +12,6 @@ public interface IMoveAction
     void HandleLogic();
 
     void HandlePhysics();
+
+    string getName();
 }
