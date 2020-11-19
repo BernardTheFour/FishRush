@@ -1,40 +1,55 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static MovementStateMachine;
 
-public class PlayerJump : MovementState
+public class PlayerJump : IMoveAction
 {
-    public PlayerJump(Character character, MovementStateMachine stateMachine) : base(character, stateMachine)
+    private string NAME = "Jump";
+
+    private Rigidbody fishRB = new Rigidbody();
+    private float jumpForce;
+
+    private Character character;
+    private MovementStateMachine stateMachine;
+
+    public PlayerJump(Character character, MovementStateMachine stateMachine)
     {
+        this.character = character;
+        this.stateMachine = stateMachine;
+
+        fishRB = character.MyRigidbody;
+        jumpForce = character.JumpForce;
     }
 
-    public override void Enter()
+    public void Enter()
     {
-        // do not delete base
-        base.Enter();
+        fishRB.velocity = Vector3.zero;
+        fishRB.AddForce(character.transform.up * jumpForce, ForceMode.Impulse);
     }
 
-    public override void Exit()
+    public void Exit()
+    { }
+
+    public void HandleState()
     {
-        // do not delete base
-        base.Exit();
+        switch (ActionState)
+        {
+            case PlayerAction.move:
+                // jump
+                stateMachine.ChangeState(character.MovingState);
+                break;
+        }
     }
 
-    public override void HandleLogic()
+    public string getName()
     {
-        // do not delete base
-        base.HandleLogic();
+        return NAME;
     }
 
-    public override void HandlePhysics()
-    {
-        // do not delete base
-        base.HandlePhysics();
-    }
+    public void HandleLogic()
+    { }
 
-    public override void HandleState()
-    {
-        // do not delete base
-        base.HandleState();
-    }
+    public void HandlePhysics()
+    { }
 }
