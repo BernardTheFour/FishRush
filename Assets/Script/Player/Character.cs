@@ -30,9 +30,9 @@ public class Character : MonoBehaviour
     public static bool isGrounded { get; private set; }
     #endregion
 
-    #region Monobehavior Callbacks
+    #region MonobehaviorCallbacks
 
-    [SerializeField] private Debugging debugger = null;
+    [SerializeField] private Debugging debugger = default;
 
     private void Awake()
     {
@@ -41,12 +41,12 @@ public class Character : MonoBehaviour
         SpeedChange = 8f;
         JumpForce = 5f;
 
-        MyRigidbody = this.GetComponent<Rigidbody>();
+        MyRigidbody = GetComponent<Rigidbody>();
 
         movementSM = new MovementStateMachine();
 
         MovingState = new PlayerMoving(this, movementSM);
-        JumpingState = new PlayerJump(this, movementSM);    
+        JumpingState = new PlayerJump(this, movementSM);   
     }
 
     private void Start()

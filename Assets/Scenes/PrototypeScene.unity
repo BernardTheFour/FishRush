@@ -167,60 +167,6 @@ MonoBehaviour:
   DebugCard: {fileID: 1103993160}
   StateText: {fileID: 1290601136}
   PositionText: {fileID: 396942894}
---- !u!1 &276602623
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 276602624}
-  - component: {fileID: 276602625}
-  m_Layer: 0
-  m_Name: PlatformGenerator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &276602624
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276602623}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 849417807}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &276602625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276602623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30c1e6db5c96be6448e1900fa8b34dd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pooledObject:
-    NoObsVariant: []
-    ObsVariant: []
-    NoJumpVariant: []
-    BonusVariant: []
-  objectToPool:
-    NoObsVariant: []
-    ObsVariant: []
-    NoJumpVariant: []
-    BonusVariant: []
-  CopyAmount: 3
 --- !u!1 &396942892
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,7 +508,6 @@ Transform:
   m_Children:
   - {fileID: 662472621}
   - {fileID: 111257384}
-  - {fileID: 276602624}
   - {fileID: 999128380}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -662,6 +607,7 @@ GameObject:
   - component: {fileID: 999128383}
   - component: {fileID: 999128382}
   - component: {fileID: 999128381}
+  - component: {fileID: 999128384}
   m_Layer: 0
   m_Name: PlatformGenerator
   m_TagString: Untagged
@@ -681,7 +627,7 @@ Transform:
   m_LocalScale: {x: 4, y: 1, z: 0.5}
   m_Children: []
   m_Father: {fileID: 849417807}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &999128381
 BoxCollider:
@@ -691,7 +637,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999128379}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -743,6 +689,35 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999128379}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &999128384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999128379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a3b1f0001962484fb6a4879a0ed1b23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Variant:
+  - Name: NoObsVariant
+    Probability: 0.35
+    Platforms:
+    - {fileID: 3931732008295659910, guid: ec7cea760e1b81e4cacbcc50c389ba66, type: 3}
+    CumulativeProbability: 0
+  - Name: ObsVariant
+    Probability: 0.35
+    Platforms:
+    - {fileID: 1208312349022692868, guid: 5212fa8b060400547ac4137526a4d080, type: 3}
+    CumulativeProbability: 0
+  - Name: BonusVariant
+    Probability: 0.3
+    Platforms:
+    - {fileID: 8340472991648488163, guid: 9284516d025f51c4cb5390324748e4a3, type: 3}
+    CumulativeProbability: 0
+  Spawn: 0
 --- !u!1 &1103993160
 GameObject:
   m_ObjectHideFlags: 0
