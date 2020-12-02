@@ -8,7 +8,7 @@ public class SpeedController
 
     private static float playTime;
 
-    private static float multiplier = 1;
+    private static float multiplier = 0.6f;
 
     private static bool play = false;
 

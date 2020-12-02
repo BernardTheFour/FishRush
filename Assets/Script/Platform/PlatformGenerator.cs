@@ -23,8 +23,6 @@ public class PlatformGenerator : MonoBehaviour
             value += platform.Probability;
             platform.CumulativeProbability = value;
         }
-
-        Create();
     }
 
     private void Update()
