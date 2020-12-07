@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3931732007915292778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.602, y: 0.409, z: 3}
+  m_LocalPosition: {x: -1.602, y: 0.409, z: 0}
   m_LocalScale: {x: 0.2, y: 1, z: 6}
   m_Children: []
   m_Father: {fileID: 3931732008295659911}
@@ -88,6 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3931732008295659911}
+<<<<<<< HEAD
   - component: {fileID: 4863907200465380124}
   - component: {fileID: 6424684822010521215}
   - component: {fileID: 2991861449059630290}
@@ -96,6 +97,11 @@ GameObject:
   m_Layer: 0
   m_Name: NoObsVariant
   m_TagString: River
+=======
+  m_Layer: 0
+  m_Name: Platform
+  m_TagString: Untagged
+>>>>>>> parent of f9a7ac0... Platform movement, still unstable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,10 +120,10 @@ Transform:
   - {fileID: 3931732008656048243}
   - {fileID: 3931732009134329932}
   - {fileID: 3931732007915292779}
-  - {fileID: 8060060729050983348}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!54 &4863907200465380124
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -186,6 +192,8 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 1, z: 6}
   m_Center: {x: -1.6, y: 0.4, z: 3}
+=======
+>>>>>>> parent of f9a7ac0... Platform movement, still unstable
 --- !u!1 &3931732008656048242
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +220,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3931732008656048242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 0.2, z: 6}
   m_Children: []
   m_Father: {fileID: 3931732008295659911}
@@ -291,7 +299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3931732009134329935}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.593, y: 0.409, z: 3}
+  m_LocalPosition: {x: 1.593, y: 0.409, z: 0}
   m_LocalScale: {x: 0.2, y: 1, z: 6}
   m_Children: []
   m_Father: {fileID: 3931732008295659911}
@@ -344,12 +352,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+<<<<<<< HEAD
 --- !u!1 &4399326171182783501
 GameObject:
+=======
+--- !u!65 &3931732009134329933
+BoxCollider:
+>>>>>>> parent of f9a7ac0... Platform movement, still unstable
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8060060729050983348}
@@ -374,3 +388,12 @@ Transform:
   m_Father: {fileID: 3931732008295659911}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+  m_GameObject: {fileID: 3931732009134329935}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+>>>>>>> parent of f9a7ac0... Platform movement, still unstable

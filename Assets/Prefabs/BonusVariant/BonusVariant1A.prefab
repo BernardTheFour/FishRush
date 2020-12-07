@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2292354516933151846
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4784449865667812279}
-  m_Layer: 0
-  m_Name: Last
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4784449865667812279
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2292354516933151846}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8340472991648488162}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3432295125525837120
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3432295125525837120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.469, z: 1.77}
+  m_LocalPosition: {x: 0, y: 0.469, z: -1.291}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 8340472991648488162}
@@ -150,7 +120,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3432295125545921839}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.469, z: 3.0219998}
+  m_LocalPosition: {x: 0, y: 0.469, z: -0.039}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 8340472991648488162}
@@ -243,7 +213,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3432295126256585021}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.469, z: 4.456}
+  m_LocalPosition: {x: 0, y: 0.469, z: 1.395}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 8340472991648488162}
@@ -318,11 +288,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8340472991648488162}
+<<<<<<< HEAD
   - component: {fileID: 8661579990482259892}
   - component: {fileID: 5663118916017446129}
   - component: {fileID: 3745170779433201925}
   - component: {fileID: 7870959933422818586}
   - component: {fileID: -1161343436868674092}
+=======
+>>>>>>> parent of f9a7ac0... Platform movement, still unstable
   m_Layer: 0
   m_Name: BonusVariant1A
   m_TagString: River
@@ -347,10 +320,10 @@ Transform:
   - {fileID: 3432295126256585020}
   - {fileID: 3432295125525837123}
   - {fileID: 3432295125545921838}
-  - {fileID: 4784449865667812279}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!54 &8661579990482259892
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -419,6 +392,8 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 1, z: 6}
   m_Center: {x: -1.6, y: 0.4, z: 3}
+=======
+>>>>>>> parent of f9a7ac0... Platform movement, still unstable
 --- !u!1 &8340472991824900887
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +420,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8340472991824900887}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 0.2, z: 6}
   m_Children: []
   m_Father: {fileID: 8340472991648488162}
@@ -524,7 +499,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8340472992561589007}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.602, y: 0.409, z: 3}
+  m_LocalPosition: {x: -1.602, y: 0.409, z: 0}
   m_LocalScale: {x: 0.2, y: 1, z: 6}
   m_Children: []
   m_Father: {fileID: 8340472991648488162}
@@ -603,7 +578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8340472993493840682}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.593, y: 0.409, z: 3}
+  m_LocalPosition: {x: 1.593, y: 0.409, z: 0}
   m_LocalScale: {x: 0.2, y: 1, z: 6}
   m_Children: []
   m_Father: {fileID: 8340472991648488162}

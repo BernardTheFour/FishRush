@@ -7,12 +7,13 @@ public class PlatformGenerator : MonoBehaviour
     [SerializeField] private List<Platform> Variant = null;
 
     private float value;
-    public Transform LastPlatform;
+    private Vector3 SummonPosition;
     public bool Spawn = false;
 
     private void Awake()
     {
-
+        SummonPosition = gameObject.transform.position;
+        SummonPosition.y = 0f;
     }
 
     private void Start()
@@ -27,7 +28,7 @@ public class PlatformGenerator : MonoBehaviour
 
     private void Update()
     {
-        if(LastPlatform.position.z <= transform.position.z)
+        if (Spawn)
         {
             Create();
         }
@@ -41,10 +42,7 @@ public class PlatformGenerator : MonoBehaviour
         {
             if (value <= platform.CumulativeProbability)
             {
-                //Debug.Log("Summon: " + platform.Name);
-                int randomValue = Random.Range(0, platform.Platforms.Count - 1);
-                GameObject gameObject = Instantiate(platform.Platforms[randomValue], LastPlatform.position, Quaternion.identity);
-                LastPlatform = gameObject.GetComponent<PlatformController>().LastPoint;
+                Debug.Log("Summon: " + platform.Name);
                 Spawn = false;
                 break;
             }
@@ -53,7 +51,6 @@ public class PlatformGenerator : MonoBehaviour
 
     //private void OnTriggerExit(Collider other)
     //{
-    //    Debug.Log("Exit: " + other.tag);
     //    if (other.CompareTag("River"))
     //    {
     //        Create();

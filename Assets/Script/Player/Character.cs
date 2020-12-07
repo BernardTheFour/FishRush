@@ -54,14 +54,10 @@ public class Character : MonoBehaviour
         movementSM.Initialize(MovingState);
 
         debugger.showDebug = true;
-
-        StartCoroutine(SpeedController.Timer());
     }
 
     private void Update()
     {
-        SpeedController.RunUpdate();
-
         TargetPosition = MovementStateMachine.PlayerDirection.x;
 
         movementSM.CurrentState.HandleState();
