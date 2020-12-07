@@ -5,8 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//[RequireComponent(typeof(CapsuleCollider))]
-//[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CapsuleCollider))]
+[RequireComponent(typeof(Rigidbody))]
 public class Character : MonoBehaviour
 {
     #region StateMachineVariables
@@ -46,7 +46,7 @@ public class Character : MonoBehaviour
         movementSM = new MovementStateMachine();
 
         MovingState = new PlayerMoving(this, movementSM);
-        JumpingState = new PlayerJump(this, movementSM);
+        JumpingState = new PlayerJump(this, movementSM);   
     }
 
     private void Start()
@@ -54,10 +54,14 @@ public class Character : MonoBehaviour
         movementSM.Initialize(MovingState);
 
         debugger.showDebug = true;
+
+        StartCoroutine(SpeedController.Timer());
     }
 
     private void Update()
     {
+        SpeedController.RunUpdate();
+
         TargetPosition = MovementStateMachine.PlayerDirection.x;
 
         movementSM.CurrentState.HandleState();
@@ -68,22 +72,6 @@ public class Character : MonoBehaviour
             debugger.State = movementSM.GetState();
             debugger.Position = transform.position;
         }
-
-        Debug.Log("Velocity: " + MyRigidbody.velocity);
-
-        //if(transform.position.y >= 2.5f)
-        //{
-        //    Vector3 position = transform.position;
-        //    position.y = 2.5f;
-        //    transform.position = position;
-        //    MyRigidbody.velocity = Vector3.zero;
-        //} else if (transform.position.y <= 0.4f)
-        //{
-        //    Vector3 position = transform.position;
-        //    position.y = 0.45f;
-        //    transform.position = position;
-        //    MyRigidbody.velocity = Vector3.zero;
-        //}
     }
 
     private void FixedUpdate()
