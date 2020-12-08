@@ -11,6 +11,7 @@ public class MovementStateMachine
 
     public static PlayerAction ActionState { get; set; }
 
+    public static bool DisableInput { get; set; }
     public static Vector2 PlayerDirection { get; set; }
 
     public IMoveAction CurrentState { get; private set; }

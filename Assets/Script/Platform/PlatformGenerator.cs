@@ -6,7 +6,6 @@ public class PlatformGenerator : MonoBehaviour
 {
     [SerializeField] private List<Platform> Variant = null;
 
-    private float value;
     public Transform LastPlatform;
     public bool Spawn = false;
 
@@ -23,8 +22,6 @@ public class PlatformGenerator : MonoBehaviour
             value += platform.Probability;
             platform.CumulativeProbability = value;
         }
-
-        Create();
     }
 
     private void Update()
@@ -52,13 +49,4 @@ public class PlatformGenerator : MonoBehaviour
             }
         }
     }
-
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    Debug.Log("Exit: " + other.tag);
-    //    if (other.CompareTag("River"))
-    //    {
-    //        Create();
-    //    }
-    //}
 }
