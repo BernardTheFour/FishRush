@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1208312347110002638}
   - component: {fileID: 1208312347110002633}
   - component: {fileID: 1208312347110002632}
-  - component: {fileID: 1208312347110002639}
   m_Layer: 0
   m_Name: Right
   m_TagString: Untagged
@@ -80,19 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1208312347110002639
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1208312347110002637}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1208312348341360616
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +90,6 @@ GameObject:
   - component: {fileID: 1208312348341360617}
   - component: {fileID: 1208312348341360612}
   - component: {fileID: 1208312348341360619}
-  - component: {fileID: 1208312348341360618}
   m_Layer: 0
   m_Name: Left
   m_TagString: Untagged
@@ -173,19 +158,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1208312348341360618
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1208312348341360616}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1208312348678541296
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,10 +169,9 @@ GameObject:
   - component: {fileID: 1208312348678541297}
   - component: {fileID: 1208312348678541068}
   - component: {fileID: 1208312348678541299}
-  - component: {fileID: 1208312348678541298}
   m_Layer: 0
   m_Name: Bottom
-  m_TagString: River
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,19 +237,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1208312348678541298
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1208312348678541296}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1208312349022692868
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,7 +319,7 @@ GameObject:
   - component: {fileID: 5537862290295076318}
   - component: {fileID: 5537862290295076313}
   - component: {fileID: 5537862290295076312}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SmallPolet
   m_TagString: Polet
   m_Icon: {fileID: 0}
@@ -454,7 +412,7 @@ GameObject:
   - component: {fileID: 5537862290384885944}
   - component: {fileID: 5537862290384885947}
   - component: {fileID: 5537862290384885946}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SmallPolet (2)
   m_TagString: Polet
   m_Icon: {fileID: 0}
@@ -547,7 +505,7 @@ GameObject:
   - component: {fileID: 5537862291191499179}
   - component: {fileID: 5537862291191499178}
   - component: {fileID: 5537862291191499173}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SmallPolet (1)
   m_TagString: Polet
   m_Icon: {fileID: 0}
@@ -640,9 +598,9 @@ GameObject:
   - component: {fileID: 5537862291409629245}
   - component: {fileID: 5537862291409629244}
   - component: {fileID: 5537862291409629247}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Obstacle
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -733,7 +691,7 @@ GameObject:
   - component: {fileID: 5537862291983283150}
   - component: {fileID: 5537862291983283145}
   - component: {fileID: 5537862291983283144}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SmallPolet (3)
   m_TagString: Polet
   m_Icon: {fileID: 0}
@@ -838,7 +796,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6421216335611143141}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 6}
+  m_LocalPosition: {x: 0, y: 0, z: 5.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1208312349022692869}

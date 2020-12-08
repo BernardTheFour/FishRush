@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2292354516933151846}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 6}
+  m_LocalPosition: {x: 0, y: 0, z: 5.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8340472991648488162}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3432295125525837132}
   - component: {fileID: 3432295125525837133}
   - component: {fileID: 3432295125525837122}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SmallPolet (1)
   m_TagString: Polet
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 3432295125545921835}
   - component: {fileID: 3432295125545921832}
   - component: {fileID: 3432295125545921833}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SmallPolet (2)
   m_TagString: Polet
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 3432295126256585017}
   - component: {fileID: 3432295126256585022}
   - component: {fileID: 3432295126256585023}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SmallPolet
   m_TagString: Polet
   m_Icon: {fileID: 0}
@@ -388,10 +388,9 @@ GameObject:
   - component: {fileID: 8340472991824900886}
   - component: {fileID: 8340472991824901099}
   - component: {fileID: 8340472991824900884}
-  - component: {fileID: 8340472991824900885}
   m_Layer: 0
   m_Name: Bottom
-  m_TagString: River
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -457,19 +456,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8340472991824900885
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8340472991824900887}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8340472992561589007
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,7 +467,6 @@ GameObject:
   - component: {fileID: 8340472992561589006}
   - component: {fileID: 8340472992561588995}
   - component: {fileID: 8340472992561589004}
-  - component: {fileID: 8340472992561589005}
   m_Layer: 0
   m_Name: Left
   m_TagString: Untagged
@@ -550,19 +535,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8340472992561589005
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8340472992561589007}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8340472993493840682
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,7 +546,6 @@ GameObject:
   - component: {fileID: 8340472993493840681}
   - component: {fileID: 8340472993493840686}
   - component: {fileID: 8340472993493840687}
-  - component: {fileID: 8340472993493840680}
   m_Layer: 0
   m_Name: Right
   m_TagString: Untagged
@@ -643,16 +614,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8340472993493840680
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8340472993493840682}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
