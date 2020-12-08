@@ -83,17 +83,33 @@ public class Character : MonoBehaviour
     #region Collision Detection
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("River"))
+        Debug.Log("Collider: " + collision.transform.tag);
+
+        if (collision.collider.CompareTag("River"))
         {
             isGrounded = true;
         }
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.CompareTag("Obstacle"))
+        {
+            MovementStateMachine.PlayerDirection = transform.position;
+            MovementStateMachine.DisableInput = true;
+        }
+    }
+
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.transform.CompareTag("River"))
+        if (collision.collider.CompareTag("River"))
         {
             isGrounded = false;
+        }
+
+        if (collision.collider.CompareTag("Obstacle"))
+        {
+            MovementStateMachine.DisableInput = false;
         }
     }
     #endregion    
