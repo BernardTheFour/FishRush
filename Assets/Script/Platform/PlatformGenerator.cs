@@ -9,11 +9,6 @@ public class PlatformGenerator : MonoBehaviour
     public Transform LastPlatform;
     public bool Spawn = false;
 
-    private void Awake()
-    {
-
-    }
-
     private void Start()
     {
         float value = 0;
