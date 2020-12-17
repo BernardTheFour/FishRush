@@ -17,11 +17,11 @@ public class PlayerMoving : IMoveAction
     private float currentVelocity;
     private float targetVelocity;
 
-    private Vector3 finalSpeed = new Vector3();
+    private Vector3 finalSpeed = default;
 
-    private Rigidbody fishRB = new Rigidbody();
+    private Rigidbody fishRB = default;
 
-    private Character character = new Character();
+    private Character character = default;
     private MovementStateMachine stateMachine = new MovementStateMachine();
 
     public PlayerMoving(Character character, MovementStateMachine stateMachine)
@@ -29,9 +29,9 @@ public class PlayerMoving : IMoveAction
         this.character = character;
         this.stateMachine = stateMachine;
 
-        fishRB = character.MyRigidbody;
-        maxVelocity = character.MaxVelocity;
-        speedChange = character.SpeedChange;
+        fishRB = this.character.MyRigidbody;
+        maxVelocity = this.character.MaxVelocity;
+        speedChange = this.character.SpeedChange;
     }
 
     public void Enter()
