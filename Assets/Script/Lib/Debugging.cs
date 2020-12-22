@@ -9,7 +9,7 @@ public class Debugging : MonoBehaviour
     [SerializeField] private Text StateText = null;
     [SerializeField] private Text PositionText = null;
 
-    private bool debugIsActive = false;
+    private static bool debugIsActive;
 
     public bool showDebug
     {

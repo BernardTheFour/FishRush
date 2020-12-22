@@ -30,9 +30,9 @@ public class Character : MonoBehaviour
     public static bool isGrounded { get; private set; }
     #endregion
 
-    #region Monobehavior Callbacks
+    #region MonobehaviorCallbacks
 
-    [SerializeField] private Debugging debugger = null;
+    [SerializeField] private Debugging debugger = default;
 
     private void Awake()
     {
@@ -41,12 +41,12 @@ public class Character : MonoBehaviour
         SpeedChange = 8f;
         JumpForce = 5f;
 
-        MyRigidbody = this.GetComponent<Rigidbody>();
+        MyRigidbody = GetComponent<Rigidbody>();
 
         movementSM = new MovementStateMachine();
 
         MovingState = new PlayerMoving(this, movementSM);
-        JumpingState = new PlayerJump(this, movementSM);    
+        JumpingState = new PlayerJump(this, movementSM);   
     }
 
     private void Start()
@@ -54,10 +54,14 @@ public class Character : MonoBehaviour
         movementSM.Initialize(MovingState);
 
         debugger.showDebug = true;
+
+        StartCoroutine(SpeedController.Timer());
     }
 
     private void Update()
     {
+        SpeedController.RunUpdate();
+
         TargetPosition = MovementStateMachine.PlayerDirection.x;
 
         movementSM.CurrentState.HandleState();
@@ -79,17 +83,33 @@ public class Character : MonoBehaviour
     #region Collision Detection
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("River"))
+        Debug.Log("Collider: " + collision.transform.tag);
+
+        if (collision.collider.CompareTag("River"))
         {
             isGrounded = true;
         }
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.CompareTag("Obstacle"))
+        {
+            MovementStateMachine.PlayerDirection = transform.position;
+            MovementStateMachine.DisableInput = true;
+        }
+    }
+
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.transform.CompareTag("River"))
+        if (collision.collider.CompareTag("River"))
         {
             isGrounded = false;
+        }
+
+        if (collision.collider.CompareTag("Obstacle"))
+        {
+            MovementStateMachine.DisableInput = false;
         }
     }
     #endregion    
