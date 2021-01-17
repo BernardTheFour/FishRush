@@ -10,14 +10,14 @@ public class Btn_Play : MonoBehaviour
     private static GameObject s_BtnPlay = default;
     private static GameObject s_Title = default;
 
+    private void Awake()
+    {
+        s_BtnPlay = BtnPlay;
+        s_Title = Title;
+    }
+
     public void PlayGame()
     {
-        if (s_BtnPlay != BtnPlay || s_Title != Title)
-        {   // assign value to static
-            s_BtnPlay = BtnPlay;
-            s_Title = Title;
-        }
-
         SpeedController.play = true;
 
         ShowTitle(false);
