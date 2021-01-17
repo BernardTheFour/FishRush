@@ -29,6 +29,7 @@ public class SpeedController
     public static void Reset()
     {
         playTime = 0;
+        Btn_Play.ShowTitle(true);
     }
 
     private static float CalculateSpeed(float multiplier, float time)

@@ -33,6 +33,7 @@ public class Character : MonoBehaviour
     #region MonobehaviorCallbacks
 
     [SerializeField] private Debugging debugger = default;
+    [SerializeField] private bool ShowDebug = default;
 
     private void Awake()
     {
@@ -53,9 +54,10 @@ public class Character : MonoBehaviour
     {
         movementSM.Initialize(MovingState);
 
-        debugger.showDebug = true;
+        debugger.showDebug = ShowDebug;
 
-        StartCoroutine(SpeedController.Timer());
+        //automatic start timer
+        //StartCoroutine(SpeedController.Timer());
     }
 
     private void Update()
