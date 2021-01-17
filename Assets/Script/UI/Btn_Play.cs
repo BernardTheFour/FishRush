@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class Btn_Play : MonoBehaviour
 {
-    [SerializeField] private GameObject BtnPlay = default;
-    [SerializeField] private GameObject Title = default;
+    [SerializeField] private GameObject MainMenuCanvas = default;
 
-    private static GameObject s_BtnPlay = default;
-    private static GameObject s_Title = default;
+    private static GameObject s_MainMenuCanvas = default;
 
     private void Awake()
     {
-        s_BtnPlay = BtnPlay;
-        s_Title = Title;
+        s_MainMenuCanvas = MainMenuCanvas;
     }
 
     public void PlayGame()
@@ -25,7 +22,6 @@ public class Btn_Play : MonoBehaviour
 
     public static void ShowTitle(bool value)
     {
-        s_BtnPlay.SetActive(value);
-        s_Title.SetActive(value);
+        s_MainMenuCanvas.SetActive(value);
     }
 }
