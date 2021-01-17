@@ -412,6 +412,7 @@ GameObject:
   - component: {fileID: 5537862290295076318}
   - component: {fileID: 5537862290295076313}
   - component: {fileID: 5537862290295076312}
+  - component: {fileID: 2864455672059671276}
   m_Layer: 9
   m_Name: SmallPolet
   m_TagString: Polet
@@ -493,6 +494,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2864455672059671276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5537862290295076314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830b7a323788f6d4499bf9506ca71e33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PeletType: 0
+  isTrap: 0
 --- !u!1 &5537862290384885940
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,6 +520,7 @@ GameObject:
   - component: {fileID: 5537862290384885944}
   - component: {fileID: 5537862290384885947}
   - component: {fileID: 5537862290384885946}
+  - component: {fileID: 2358527052522586738}
   m_Layer: 9
   m_Name: SmallPolet (2)
   m_TagString: Polet
@@ -586,6 +602,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2358527052522586738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5537862290384885940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830b7a323788f6d4499bf9506ca71e33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PeletType: 0
+  isTrap: 0
 --- !u!1 &5537862291191499175
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,6 +628,7 @@ GameObject:
   - component: {fileID: 5537862291191499179}
   - component: {fileID: 5537862291191499178}
   - component: {fileID: 5537862291191499173}
+  - component: {fileID: 2436074157216288361}
   m_Layer: 9
   m_Name: SmallPolet (1)
   m_TagString: Polet
@@ -679,6 +710,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2436074157216288361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5537862291191499175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830b7a323788f6d4499bf9506ca71e33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PeletType: 0
+  isTrap: 0
 --- !u!1 &5537862291983283146
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,6 +736,7 @@ GameObject:
   - component: {fileID: 5537862291983283150}
   - component: {fileID: 5537862291983283145}
   - component: {fileID: 5537862291983283144}
+  - component: {fileID: 7078606231127509364}
   m_Layer: 9
   m_Name: SmallPolet (3)
   m_TagString: Polet
@@ -772,6 +818,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7078606231127509364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5537862291983283146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830b7a323788f6d4499bf9506ca71e33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PeletType: 0
+  isTrap: 0
 --- !u!1 &6421216335611143141
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,7 +856,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6421216335611143141}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.8}
+  m_LocalPosition: {x: 0, y: 0, z: 5.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1208312349022692869}

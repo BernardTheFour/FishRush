@@ -69,8 +69,14 @@ public class Character : MonoBehaviour
 
         if (debugger.showDebug)
         {
+            debugger.GameOver = ScoreManager.GameOver;
+            debugger.PlayTime = SpeedController.playTime;
             debugger.State = movementSM.GetState();
             debugger.Position = transform.position;
+            debugger.Speed = SpeedController.Speed;
+            debugger.PoletScore = ScoreManager.Score;
+            debugger.Lifes = ScoreManager.Life;
+            debugger.VulnerableCD = ScoreManager.VulnerableCoolDown;
         }
     }
 
@@ -83,7 +89,6 @@ public class Character : MonoBehaviour
     #region Collision Detection
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collider: " + collision.transform.tag);
 
         if (collision.collider.CompareTag("River"))
         {
@@ -110,6 +115,7 @@ public class Character : MonoBehaviour
         if (collision.collider.CompareTag("Obstacle"))
         {
             MovementStateMachine.DisableInput = false;
+            ScoreManager.Life -= 1;
         }
     }
     #endregion    

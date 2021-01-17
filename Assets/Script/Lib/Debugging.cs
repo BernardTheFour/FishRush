@@ -5,9 +5,19 @@ using UnityEngine.UI;
 
 public class Debugging : MonoBehaviour
 {
-    [SerializeField] private GameObject DebugCard = null;
-    [SerializeField] private Text StateText = null;
-    [SerializeField] private Text PositionText = null;
+    [SerializeField] private GameObject DebugCard = default;
+
+    [Space(10)]
+    [SerializeField] private Text GameOverText = default;
+    [SerializeField] private Text PlayTimeText = default;
+    [SerializeField] private Text StateText = default;
+    [SerializeField] private Text PositionText = default;
+    [SerializeField] private Text SpeedText = default;
+
+    [Space(10)]
+    [SerializeField] private Text PoletScoreText = default;
+    [SerializeField] private Text LifesText = default;
+    [SerializeField] private Text VulnerableCDText = default;
 
     private static bool debugIsActive;
 
@@ -21,6 +31,21 @@ public class Debugging : MonoBehaviour
         get
         {
             return debugIsActive;
+        }
+    }
+    public bool GameOver
+    {
+        set
+        {
+            GameOverText.text = "GameOver\t: " + value;
+        }
+    }
+
+    public float PlayTime
+    {
+        set
+        {
+            PlayTimeText.text = "PlayTime\t: " + (int) value;
         }
     }
 
@@ -37,5 +62,50 @@ public class Debugging : MonoBehaviour
         {
             PositionText.text = "Position\t: " + value;
         }
+    }
+
+    public float Speed
+    {
+        set
+        {
+
+            SpeedText.text = "Speed\t\t: " + Rounded(value, 2);
+        }
+    }
+
+    public int PoletScore
+    {
+        set
+        {
+            PoletScoreText.text = "Pelet(s)\t\t: " + value;
+        }
+    }
+
+    public int Lifes
+    {
+        set
+        {
+            LifesText.text = "Life\t\t\t: " + value;
+        }
+    }
+
+    public float VulnerableCD { 
+    set
+        {
+            float newValue = value;
+
+            if (value >= 2f)
+            {
+                newValue = 0;
+            }
+
+            VulnerableCDText.text = "LifeCD\t\t: " + Rounded(newValue, 1) + " s"; 
+        }
+    }
+
+    private float Rounded(float value, int decimals)
+    {
+        int pow = (int) Mathf.Pow(10, decimals);
+        return Mathf.Round(value * pow) / pow;
     }
 }

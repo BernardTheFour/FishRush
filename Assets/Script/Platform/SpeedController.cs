@@ -6,16 +6,18 @@ public class SpeedController
 {
     public static float Speed { private set; get; }
 
-    private static float playTime;
+    public static float playTime;
 
     private static float multiplier = 0.8f;
 
-    private static bool play = false;
+    public static bool play = false;
 
     public static void RunUpdate()
     {
         if (!play)
         {
+            playTime = 0;
+            Speed = 0f;
             return;
         }
 
@@ -31,8 +33,9 @@ public class SpeedController
 
     private static float CalculateSpeed(float multiplier, float time)
     {
-        float s = (2 / 3) * time + (2 * Mathf.Sin(time / 3)) + 5;
-        return s * multiplier;
+        float s = (2 / 3) * time + (2 * Mathf.Sin(time/ 3)) + 5;
+        float totalSpeed = (s) + (time / 30);
+        return totalSpeed * multiplier;
     }
 
     public static IEnumerator Timer() {
