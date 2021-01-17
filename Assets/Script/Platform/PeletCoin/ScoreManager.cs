@@ -8,9 +8,11 @@ public class ScoreManager : MonoBehaviour
     [HideInInspector] public static int Score { set; get; }
     [HideInInspector] public static int Life { set; get; }
 
+    private static int MaxLife = 2;
+
     private void Start()
     {
-        Life = 2;
+        Life = MaxLife;
     }
 
     [HideInInspector] public static float VulnerableCoolDown;
@@ -22,7 +24,7 @@ public class ScoreManager : MonoBehaviour
             SpeedController.play = false;
             return;
         }
-        else if (Life >= 2)
+        else if (Life >= MaxLife)
         {
             return;
         } else if (Life <= 0)
@@ -38,5 +40,12 @@ public class ScoreManager : MonoBehaviour
             Life += 1;
             VulnerableCoolDown = 2f;
         }
+    }
+
+    public static void Reset()
+    {
+        Life = MaxLife;
+        Score = 0;
+        GameOver = false;
     }
 }

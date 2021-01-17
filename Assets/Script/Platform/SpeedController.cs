@@ -16,11 +16,11 @@ public class SpeedController
     {
         if (!play)
         {
-            playTime = 0;
-            Speed = 0f;
+            Reset();
             return;
         }
 
+        
         playTime += Time.deltaTime;
         Speed = CalculateSpeed(multiplier, playTime);
         //Debug.Log("Speed: " + Speed);
@@ -29,6 +29,9 @@ public class SpeedController
     public static void Reset()
     {
         playTime = 0;
+        Speed = 0;
+        ScoreManager.Reset();
+        Btn_Play.ShowTitle(true);
     }
 
     private static float CalculateSpeed(float multiplier, float time)
